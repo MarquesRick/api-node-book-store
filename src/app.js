@@ -40,6 +40,13 @@ app.put('/books/:id', (req, res) => {
   res.status(200).json(books);
 });
 
+app.delete('/books/:id', (req, res) => {
+  let { id } = req.params;
+  let index = getBook(id);
+  books.splice(index, 1);
+  res.status(200).send(`✅ Book ${id} successfully removed!`);
+});
+
 const getBook = (id) => {
   return books.findIndex((book) => book.id == id);
 };
