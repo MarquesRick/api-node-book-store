@@ -1,9 +1,14 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from './swagger.json' assert { type: 'json' };
 
 const app = express();
 
 //for express interpret json on req.body
 app.use(express.json());
+
+//swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const books = [
   {
