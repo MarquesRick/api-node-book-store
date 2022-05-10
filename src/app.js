@@ -34,9 +34,17 @@ app.get('/books/:id', (req, res) => {
   res.status(200).json(books[index]);
 });
 
+app.get('/book/findByTitle', (req, res) => {
+  console.log('entrou!!!');
+  const { title } = req.query;
+  const book = books.filter((b) => b.title.includes(title));
+  console.log(book);
+  res.status(200).json(book);
+});
+
 app.post('/books', (req, res) => {
   books.push(req.body);
-  res.status(201).send('✅ Book registered successfully!');
+  res.status(201).json(books);
 });
 
 app.put('/books/:id', (req, res) => {
