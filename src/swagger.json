@@ -135,7 +135,10 @@
               "examples": {
                 "book": {
                   "value": {
-                    "title": "Harry Potter and the Philosopher's STONE"
+                    "title": "Clean Code",
+                    "author": "Robert Cecil Martin",
+                    "publisher": "Prentice Hall PTR",
+                    "numberPages": 431
                   }
                 }
               }
