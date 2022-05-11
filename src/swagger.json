@@ -39,8 +39,10 @@
               "examples": {
                 "book": {
                   "value": {
-                    "id": 600,
-                    "title": "Harry Potter and the Philosopher's Stone"
+                    "title": "Clean Code",
+                    "author": "Robert Cecil Martin",
+                    "publisher": "Prentice Hall PTR",
+                    "numberPages": 431
                   }
                 }
               }
@@ -218,10 +220,19 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "number"
+            "type": "string"
           },
           "title": {
             "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "numberPages": {
+            "type": "number"
           }
         }
       }

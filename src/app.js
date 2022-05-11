@@ -1,8 +1,7 @@
 import express from 'express';
 import db from './config/dbConnect.js';
 import books from './models/Book.js';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocs from './swagger.json' assert { type: 'json' };
+import routes from './routes/index.js';
 
 //connect to database
 db.on('error', console.log.bind(console, '❌ Database connection error!'));
@@ -11,32 +10,7 @@ db.once('open', () => {
 });
 const app = express();
 
-//for express interpret json on req.body
-app.use(express.json());
-
-//swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// const books = [
-//   {
-//     id: 1,
-//     title: 'The Lord of the Rings',
-//   },
-//   {
-//     id: 2,
-//     title: 'Hobbit',
-//   },
-// ];
-
-app.get('/', (req, res) => {
-  res.status(200).send('🙋🏻‍♂️👋 Welcome to API book store!');
-});
-
-app.get('/books', (req, res) => {
-  books.find((err, books) => {
-    res.status(200).json(books);
-  });
-});
+routes(app);
 
 app.get('/books/:id', (req, res) => {
   let index = getBook(req.params.id);
