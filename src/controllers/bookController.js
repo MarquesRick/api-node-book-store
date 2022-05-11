@@ -7,8 +7,7 @@ export default class BookController {
         res
           .status(500)
           .send({ message: `${err.message} - error on getAll books.` });
-
-      res.status(200).json(books);
+      else res.status(200).json(books);
     });
   };
 
@@ -19,8 +18,7 @@ export default class BookController {
         res
           .status(500)
           .send({ message: `${err.message} - error on create book.` });
-
-      res.status(201).send(book.toJSON());
+      else res.status(201).send(book.toJSON());
     });
   };
 }
