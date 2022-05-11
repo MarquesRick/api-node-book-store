@@ -11,6 +11,17 @@ export default class BookController {
     });
   };
 
+  static getById = (req, res) => {
+    const id = req.params.id;
+    books.findById(id, (err, books) => {
+      if (err)
+        res
+          .status(400)
+          .send({ message: `${err.message} - error on getById - ID: ${id}.` });
+      else res.status(200).json(books);
+    });
+  };
+
   static createBook = (req, res) => {
     let book = new books(req.body);
     book.save((err) => {
