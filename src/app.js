@@ -1,7 +1,13 @@
 import express from 'express';
+import db from './config/dbConnect.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swagger.json' assert { type: 'json' };
 
+//connect to database
+db.on('error', console.log.bind(console, '❌ Database connection error!'));
+db.once('open', () => {
+  console.log('✅ Database successfully connected!');
+});
 const app = express();
 
 //for express interpret json on req.body
