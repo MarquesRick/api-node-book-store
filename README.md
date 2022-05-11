@@ -10,6 +10,9 @@ npm i express@4.17.3
 
 # intall swagger-ui-express
 npm i swagger-ui-express -D
+
+# install mongoose
+npm install mongoose@6.2.6
 ```
 
 ## Info

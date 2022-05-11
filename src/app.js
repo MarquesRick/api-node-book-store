@@ -1,5 +1,6 @@
 import express from 'express';
 import db from './config/dbConnect.js';
+import books from './models/Book.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocs from './swagger.json' assert { type: 'json' };
 
@@ -16,23 +17,25 @@ app.use(express.json());
 //swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-const books = [
-  {
-    id: 1,
-    title: 'The Lord of the Rings',
-  },
-  {
-    id: 2,
-    title: 'Hobbit',
-  },
-];
+// const books = [
+//   {
+//     id: 1,
+//     title: 'The Lord of the Rings',
+//   },
+//   {
+//     id: 2,
+//     title: 'Hobbit',
+//   },
+// ];
 
 app.get('/', (req, res) => {
   res.status(200).send('🙋🏻‍♂️👋 Welcome to API book store!');
 });
 
 app.get('/books', (req, res) => {
-  res.status(200).json(books);
+  books.find((err, books) => {
+    res.status(200).json(books);
+  });
 });
 
 app.get('/books/:id', (req, res) => {
