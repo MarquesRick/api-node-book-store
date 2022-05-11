@@ -2,8 +2,12 @@ import books from '../models/Book.js';
 
 export default class BookController {
   static getAll = (req, res) => {
-    console.log('entrou');
     books.find((err, books) => {
+      if (err)
+        res
+          .status(500)
+          .send({ message: `${err.message} - error on getAll books.` });
+
       res.status(200).json(books);
     });
   };
