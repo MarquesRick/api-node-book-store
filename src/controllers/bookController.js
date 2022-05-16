@@ -15,9 +15,9 @@ export default class BookController {
     const id = req.params.id;
     books.findById(id, (err, books) => {
       if (err)
-        res
-          .status(400)
-          .send({ message: `${err.message} - error on getById - ID: ${id}.` });
+        res.status(400).send({
+          message: `${err.message} - error on getById - ID: ${id} not found!`,
+        });
       else res.status(200).json(books);
     });
   };
@@ -41,6 +41,17 @@ export default class BookController {
         res
           .status(500)
           .send({ message: `${err.message} - error on update book.` });
+    });
+  };
+
+  static deleteBook = (req, res) => {
+    const id = req.params.id;
+    books.findByIdAndDelete(id, (err) => {
+      if (!err) res.status(200).send({ message: 'Book deleted successfully!' });
+      else
+        res.status(500).send({
+          message: `${err.message} - error on delete book. Book not found!`,
+        });
     });
   };
 }

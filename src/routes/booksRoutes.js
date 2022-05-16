@@ -7,6 +7,7 @@ router
   .get('/books', BookController.getAll)
   .get('/books/:id', BookController.getById)
   .post('/books', BookController.createBook)
-  .put('/books/:id', BookController.updateBook);
+  .put('/books/:id', BookController.updateBook)
+  .delete('/books/:id', BookController.deleteBook);
 
 export default router;
