@@ -215,6 +215,162 @@
           }
         }
       }
+    },
+    "/authors": {
+      "post": {
+        "summary": "create author",
+        "description": "this route will create a author",
+        "tags": ["Authors"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              },
+              "examples": {
+                "author": {
+                  "value": {
+                    "name": "Robert Cecil Martin",
+                    "nationality": "Brazil"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Author"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error"
+          }
+        }
+      },
+      "get": {
+        "description": "get all authors",
+        "summary": "get all author",
+        "tags": ["Authors"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/authors/{id}": {
+      "get": {
+        "description": "get author by id",
+        "summary": "get author by id",
+        "tags": ["Authors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "author id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Author"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "change author by id",
+        "summary": "change author by id",
+        "tags": ["Authors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "author id",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Author"
+              },
+              "examples": {
+                "author": {
+                  "value": {
+                    "name": "Robert Cecil Martin",
+                    "nationality": "Brazil"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "delete author by id",
+        "summary": "delete author by id",
+        "tags": ["Authors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "author id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
