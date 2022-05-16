@@ -385,7 +385,8 @@
             "type": "string"
           },
           "author": {
-            "type": "string"
+            "type": "object",
+            "$ref": "#/components/schemas/Author"
           },
           "publisher": {
             "type": "string"
