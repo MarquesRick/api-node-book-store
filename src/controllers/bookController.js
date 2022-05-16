@@ -2,24 +2,30 @@ import books from '../models/Book.js';
 
 export default class BookController {
   static getAll = (req, res) => {
-    books.find((err, books) => {
-      if (err)
-        res
-          .status(500)
-          .send({ message: `${err.message} - error on getAll books.` });
-      else res.status(200).json(books);
-    });
+    books
+      .find()
+      .populate('author')
+      .exec((err, books) => {
+        if (err)
+          res
+            .status(500)
+            .send({ message: `${err.message} - error on getAll books.` });
+        else res.status(200).json(books);
+      });
   };
 
   static getById = (req, res) => {
     const id = req.params.id;
-    books.findById(id, (err, books) => {
-      if (err)
-        res.status(400).send({
-          message: `${err.message} - error on getById - ID: ${id} not found!`,
-        });
-      else res.status(200).json(books);
-    });
+    books
+      .findById(id)
+      .populate('author', 'name')
+      .exec((err, books) => {
+        if (err)
+          res.status(400).send({
+            message: `${err.message} - error on getById - ID: ${id} not found!`,
+          });
+        else res.status(200).json(books);
+      });
   };
 
   static createBook = (req, res) => {
