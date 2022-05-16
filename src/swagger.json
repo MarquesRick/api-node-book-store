@@ -238,6 +238,20 @@
             "type": "number"
           }
         }
+      },
+      "Author": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "nationality": {
+            "type": "string"
+          }
+        }
       }
     }
   }
