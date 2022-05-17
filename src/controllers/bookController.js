@@ -60,4 +60,11 @@ export default class BookController {
         });
     });
   };
+
+  static getBookByPublisher = (req, res) => {
+    const publisher = req.query.publisher;
+    books.find({ publisher: publisher }, {}, (err, books) => {
+      res.status(200).send(books);
+    });
+  };
 }
