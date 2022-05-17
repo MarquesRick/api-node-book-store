@@ -40,7 +40,7 @@
                 "book": {
                   "value": {
                     "title": "Clean Code",
-                    "author": "Robert Cecil Martin",
+                    "author": "6282d63d2a64f7cc93da214d",
                     "publisher": "Prentice Hall PTR",
                     "numberPages": 431
                   }
@@ -185,17 +185,17 @@
         }
       }
     },
-    "/book/findByTitle": {
+    "/books/search": {
       "get": {
-        "operationId": "getPetsById",
-        "description": "get book by title",
-        "summary": "get book by title",
+        "operationId": "getByPublisher",
+        "description": "get book by publisher",
+        "summary": "get book by publisher",
         "tags": ["Books"],
         "parameters": [
           {
-            "name": "title",
+            "name": "publisher",
             "in": "query",
-            "description": "book title",
+            "description": "book publisher",
             "required": true
           }
         ],

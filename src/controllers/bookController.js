@@ -28,6 +28,16 @@ export default class BookController {
       });
   };
 
+  static getBookByPublisher = (req, res) => {
+    const publisher = req.query.publisher;
+    books
+      .find({ publisher: publisher })
+      .populate('author')
+      .exec((err, books) => {
+        res.status(200).send(books);
+      });
+  };
+
   static createBook = (req, res) => {
     let book = new books(req.body);
     book.save((err) => {
@@ -58,13 +68,6 @@ export default class BookController {
         res.status(500).send({
           message: `${err.message} - error on delete book. Book not found!`,
         });
-    });
-  };
-
-  static getBookByPublisher = (req, res) => {
-    const publisher = req.query.publisher;
-    books.find({ publisher: publisher }, {}, (err, books) => {
-      res.status(200).send(books);
     });
   };
 }
