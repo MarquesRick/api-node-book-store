@@ -1,7 +1,8 @@
 import express from 'express';
 import books from './booksRoutes.js';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocs from '../swagger.json' assert { type: 'json' };
+import swaggerDocs from '../swagger.json';
+//assert { type: 'json' }
 import authors from './authorsRoutes.js';
 
 const routes = (app) => {
